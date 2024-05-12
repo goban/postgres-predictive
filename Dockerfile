@@ -1,7 +1,7 @@
 FROM postgres:alpine
 
-ENV DOPPLER_TOKEN DOPPLER_TOKEN
-ENV POSTGRES_PASSWORD POSTGRES_PASSWORD
+ENV DOPPLER_TOKEN $DOPPLER_TOKEN
+ENV POSTGRES_PASSWORD $POSTGRES_PASSWORD
 
 RUN wget -q -t3 'https://packages.doppler.com/public/cli/rsa.8004D9FF50437357.key' -O /etc/apk/keys/cli@doppler-8004D9FF50437357.rsa.pub && \
     echo 'https://packages.doppler.com/public/cli/alpine/any-version/main' | tee -a /etc/apk/repositories && \

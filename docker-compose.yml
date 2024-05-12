@@ -36,7 +36,7 @@ services:
     container_name: adminer
     image: adminer
     environment:
-      - ADMINER_PLUGINS='tables-filter tinymce'
+      - ADMINER_PLUGINS='tinymce'
       - ADMINER_DESIGN='pepa-linha-dark'
     ports:
       - "8080:8080"

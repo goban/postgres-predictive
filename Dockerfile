@@ -8,6 +8,8 @@ RUN wget -q -t3 'https://packages.doppler.com/public/cli/rsa.8004D9FF50437357.ke
     echo 'https://packages.doppler.com/public/cli/alpine/any-version/main' | tee -a /etc/apk/repositories && \
     apk add doppler
 
+RUN doppler configure set token $DOPPLER_TOKEN
+
 RUN echo "$FOO | \$DOPPLER_TOKEN | $DOPPLER_TOKEN | DOPPLER_TOKEN"
 # RUN doppler run --command="echo \$DOPPLER_TOKEN"
 RUN doppler run --command="echo \$POSTGRES_PASSWORD"

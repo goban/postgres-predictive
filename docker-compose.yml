@@ -2,8 +2,8 @@ services:
   postgres:
     container_name: postgres
     image: postgres:alpine
-    init: true
-    build: .
+    # init: true
+    # build: .
     ports:
       - "5432:5432"
     env_file:

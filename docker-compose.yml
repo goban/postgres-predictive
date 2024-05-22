@@ -2,20 +2,23 @@ services:
   postgres:
     container_name: postgres
     image: postgres
-    # init: true
+    init: true
     # build: .
     ports:
       - "5432:5432"
-    # env_file:
-    #   - .env
+    expose:
+      - "5432"
+    env_file:
+      - .env
     # set shared memory limit when using docker-compose
     shm_size: 128mb
     environment:
+      - PGUSER=postgres
       - DOPPLER_TOKEN
-      # - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_USER
       - POSTGRES_PASSWORD
       - POSTGRES_CRYPTOKEY
+      - POSTGRES_DB
       - PGDATA=/var/lib/postgresql/data/pgdata
       - POSTGRESQL_USERNAME_CONNECTION_LIMIT=9001
       - POSTGRESQL_POSTGRES_CONNECTION_LIMIT=9001
@@ -34,10 +37,12 @@ services:
   adminer:
     container_name: adminer
     image: adminer
-    environment:
-      - ADMINER_DESIGN='pepa-linha-dark'
+    volumes:
+      - ./adminer.css:/var/www/html/adminer.css
     ports:
       - "8080:8080"
+    expose:
+      - "8080"
     restart: unless-stopped
 
 networks:

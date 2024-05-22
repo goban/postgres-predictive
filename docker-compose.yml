@@ -6,15 +6,16 @@ services:
     # build: .
     ports:
       - "5432:5432"
-    env_file:
-      - .env
+    # env_file:
+    #   - .env
     # set shared memory limit when using docker-compose
     shm_size: 128mb
     environment:
-      - DOPPLER_TOKEN=${DOPPLER_TOKEN}
-      - POSTGRES_USER=${POSTGRES_USER}
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-      - POSTGRES_CRYPTOKEY=${POSTGRES_CRYPTOKEY}
+      - DOPPLER_TOKEN
+      # - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_CRYPTOKEY
       - PGDATA=/var/lib/postgresql/data/pgdata
       - POSTGRESQL_USERNAME_CONNECTION_LIMIT=9001
       - POSTGRESQL_POSTGRES_CONNECTION_LIMIT=9001
